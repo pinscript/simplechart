@@ -56,4 +56,5 @@ Usage:
 ## TODO
 1. Allow types other than datetime on X axis
 2. Grid
-3. ?
+3. Animations
+4. ?
