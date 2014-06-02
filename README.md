@@ -52,3 +52,8 @@ Charts can be customized by providing the following options:
 Usage:
 
     SimpleChart.Line("chart", data, options);
+
+## TODO
+1. Allow types other than datetime on X axis
+2. Grid
+3. ?
