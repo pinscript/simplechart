@@ -188,7 +188,7 @@
                         return x(a.date);
                     })
                     .attr("cy", function (a) {
-                        return y(a.count) + 1;
+                        return y(a.count);
                     })
                     .attr("r", opts.pointSize)
                     .on("mouseenter", function () {
