@@ -47,7 +47,7 @@
                 pointSize: merge(options, "pointSize", 4),
                 pointClick: merge(options, "pointClick", false),
                 dateFormat: merge(options, "dateFormat", "%Y-%m-%d"),
-                title: merge(options, "title", function (date, count) {
+                pointTitle: merge(options, "pointTitle", function (date, count) {
                     return date + ": " + count;
                 })
             };
@@ -98,7 +98,8 @@
                 var value = +data[i][key];
                 wrapped[i].push({
                     date: dateFormat.parse(key),
-                    count: value
+                    count: value,
+                    lineNumber: i
                 });
                 
                 if(value < min) {
@@ -177,6 +178,7 @@
         // Points
         if(opts.points) {
             for(var i = 0; i < wrapped.length; i++) {
+                var lineNumber = i;
                 svg.selectAll("data-point")
                     .data(wrapped[i])
                     .enter()
@@ -197,12 +199,12 @@
                     })
                     .on("click", function(d) {
                         if(opts.pointClick) {
-                            opts.pointClick(dateFormat(d.date), d.count);
+                            opts.pointClick(dateFormat(d.date), d.count, d.lineNumber);
                         }
                     })
                     .append("svg:title")
                         .text(function (d) {
-                            return opts.title(dateFormat(d.date), d.count);
+                            return opts.pointTitle(dateFormat(d.date), d.count, d.lineNumber);
                         });
             }
         }

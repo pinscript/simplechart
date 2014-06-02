@@ -19,6 +19,12 @@
                 var options = {
                     points: true,
                     pointSize: 2,
+                    pointClick: function(d, v, i) {
+                        alert("Clicked line " + i + ". Date is " + d + " and value is " + v);
+                    },
+                    pointTitle: function(d, v, i) {
+                        return "Line " + i + ". Date is " + d + " and value is " + v
+                    },
                     grid: true,
                     area: true
                 };
