@@ -43,7 +43,8 @@ Charts can be customized by providing the following options:
         area: bool (default true),
         smooth: bool (default false),
         points: bool (default true),
-        pointSize: int (default 4)
+        pointSize: int (default 4),
+        pointClick: function (function invoked when clicking a point, default none),
         dateFormat: string (a d3 compatible date format, default "%Y-%m-%d"),
         title: function (function providing the title when hovering over a point, default function (date, count) { return date + ": " + count; })
     };
