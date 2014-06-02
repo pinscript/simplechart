@@ -40,6 +40,7 @@
             height = elementHeight - margin.top - margin.bottom,
             opts = {
                 area: merge(options, "area", true),
+                axis: merge(options, "axis", true),
                 smooth: merge(options, "smooth", true),
                 grid: merge(options, "grid", true),
                 points: merge(options, "points", true),
@@ -144,14 +145,16 @@
         }
 
         // Axises
-        svg.append("g")
-            .attr("class", "x sc-axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
+        if (opts.axis) {
+            svg.append("g")
+                .attr("class", "x sc-axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
 
-        svg.append("g")
-            .attr("class", "y sc-axis")
-            .call(yAxis);
+            svg.append("g")
+                .attr("class", "y sc-axis")
+                .call(yAxis);
+        }
 
         // Line
         svg.append("path")
