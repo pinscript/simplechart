@@ -43,6 +43,7 @@ Charts can be customized by providing the following options:
     var options = {
         area: bool (default true),
         smooth: bool (default true),
+        axis: bool (default true),
         grid: bool (default true),
         points: bool (default true),
         pointSize: int (default 4),
