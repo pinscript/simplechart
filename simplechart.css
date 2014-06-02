@@ -7,19 +7,21 @@
 .sc-axis text {
     font-family: Helvetica,Arial,Verdana,sans-serif;
     font-size: 8px;
-    fill: #333333;
+    fill: #333;
 }
 
 .sc-line {
     fill: none;
-    stroke: #335C87;
+    stroke: #30a0eb;
     stroke-width: 1px;
 }
 
 .sc-area {
-    fill: #C7E2FF;
+    fill: #e7f4fd;
 }
 
 .sc-point {
-    fill: #22364D;
+    stroke: #30a0eb;
+    stroke-width: 2px;
+    fill: #fff;
 }

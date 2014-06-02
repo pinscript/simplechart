@@ -7,7 +7,7 @@ A wrapper arund d3.js for simple (at the moment only) line charts.
 
 This is the most basic line chart
 
-![Simple line chart](http://i.imgur.com/RDrKofr.png "Simple line chart")
+![Simple line chart](http://i.imgur.com/U1zLxAF.png "Simple line chart")
 
     <head>
         <link rel="stylesheet" href="../simplechart.css" />
@@ -56,5 +56,6 @@ Usage:
 ## TODO
 1. Allow types other than datetime on X axis
 2. Grid
-3. Animations
-4. ?
+3. Multiple lines
+4. Animations
+5. Pie charts
