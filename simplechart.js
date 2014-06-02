@@ -113,28 +113,6 @@
         x.domain([wrapped[0][0].date, wrapped[0][wrapped[0].length - 1].date]);
         y.domain([max, min]);
         
-        // Grid
-        var xAxisGrid = yAxisGrid = false;
-        if (opts.grid) {
-            var yAxisGrid = d3.svg.axis().scale(y)
-              .tickSize(width, 0)
-              .tickFormat("")
-              .orient("right")
-
-            var xAxisGrid = d3.svg.axis().scale(x)
-              .tickSize(-height, 0)
-              .tickFormat("")
-              .orient("top")
-              
-             svg.append("g")
-                .attr("class", "sc-grid")
-                .call(xAxisGrid);
-                
-            svg.append("g")
-                .attr("class", "sc-grid")
-                .call(yAxisGrid);
-        }
-        
         // Area fill
         if (opts.area) {        
             var area = d3.svg.area()
@@ -153,6 +131,27 @@
                   .attr("clip-path", "url(#clip)")
                   .attr("d", area(wrapped[i]));
           }
+        }
+        
+        // Grid
+        if (opts.grid) {
+            var yAxisGrid = d3.svg.axis().scale(y)
+              .tickSize(width, 0)
+              .tickFormat("")
+              .orient("right")
+
+            var xAxisGrid = d3.svg.axis().scale(x)
+              .tickSize(-height, 0)
+              .tickFormat("")
+              .orient("top")
+              
+             svg.append("g")
+                .attr("class", "sc-grid")
+                .call(xAxisGrid);
+                
+            svg.append("g")
+                .attr("class", "sc-grid")
+                .call(yAxisGrid);
         }
 
         // Axises
