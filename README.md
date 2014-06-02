@@ -8,6 +8,7 @@ A wrapper arund d3.js for simple (at the moment only) line charts.
 This is the most basic line chart
 
 ![Simple line chart](http://i.imgur.com/RDrKofr.png "Simple line chart")
+
     <link rel="stylesheet" href="../simplechart.css" />
     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript">
