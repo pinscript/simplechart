@@ -5,7 +5,7 @@ A wrapper arund d3.js for simple (at the moment only) line charts.
 
 ## Usage
 
-This is the most basic line chart
+This is a basic line chart:
 
 ![Simple line chart](http://i.imgur.com/UDX6DTv.png "Simple line chart")
 
