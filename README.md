@@ -41,7 +41,7 @@ Charts can be customized by providing the following options:
 
     var options = {
         area: bool (default true),
-        smooth: bool (default false),
+        smooth: bool (default true),
         points: bool (default true),
         pointSize: int (default 4),
         pointClick: function (function invoked when clicking a point, default none),

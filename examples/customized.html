@@ -17,11 +17,14 @@
             
             window.onload = function() {
                 var options = {
-                    smooth: true,
+                    smooth: false,
                     area: false,
                     pointSize: 6,
+                    pointClick: function(k, v) {
+                        alert("Clicked on " + k + ". Value is " + v + ".");
+                    },
                     title: function(k, v) {
-                        return "We had " + v + " page views on " + k;
+                        return "We had " + v + " page views on " + k + ".";
                     }
                 };
                 SimpleChart.Line("chart", data, options);

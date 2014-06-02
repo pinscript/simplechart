@@ -40,7 +40,7 @@
             height = elementHeight - margin.top - margin.bottom,
             opts = {
                 area: merge(options, "area", true),
-                smooth: merge(options, "smooth", false),
+                smooth: merge(options, "smooth", true),
                 points: merge(options, "points", true),
                 pointSize: merge(options, "pointSize", 4),
                 pointClick: merge(options, "pointClick", false),
