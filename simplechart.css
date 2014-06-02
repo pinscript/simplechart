@@ -1,0 +1,25 @@
+.sc-axis path, .sc-axis line {
+    fill: none;
+    stroke: #335C87;
+    shape-rendering: crispEdges;
+}
+
+.sc-axis text {
+    font-family: Helvetica,Arial,Verdana,sans-serif;
+    font-size: 8px;
+    fill: #333333;
+}
+
+.sc-line {
+    fill: none;
+    stroke: #335C87;
+    stroke-width: 1px;
+}
+
+.sc-area {
+    fill: #C7E2FF;
+}
+
+.sc-point {
+    fill: #22364D;
+}
