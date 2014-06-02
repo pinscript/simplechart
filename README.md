@@ -7,7 +7,7 @@ A wrapper arund d3.js for simple (at the moment only) line charts.
 
 This is the most basic line chart
 
-![Simple line chart](http://i.imgur.com/V8c1U4k.png "Simple line chart")
+![Simple line chart](http://i.imgur.com/UDX6DTv.png "Simple line chart")
 
     <head>
         <link rel="stylesheet" href="../simplechart.css" />
