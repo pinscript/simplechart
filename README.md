@@ -34,3 +34,20 @@ This is the most basic line chart
     
     
 More examples can be found in the examples directory.
+
+## Custom charts
+
+Charts can be customized by providing the following options:
+
+    var options = {
+        area: bool (default true),
+        smooth: bool (default false),
+        points: bool (default true),
+        pointSize: int (default 4)
+        dateFormat: string (a d3 compatible date format, default "%Y-%m-%d"),
+        title: function (function providing the title when hovering over a point, default function (date, count) { return date + ": " + count; })
+    };
+    
+Usage:
+
+    SimpleChart.Line("chart", data, options);
