@@ -43,6 +43,7 @@
                 smooth: merge(options, "smooth", false),
                 points: merge(options, "points", true),
                 pointSize: merge(options, "pointSize", 4),
+                pointClick: merge(options, "pointClick", false),
                 dateFormat: merge(options, "dateFormat", "%Y-%m-%d"),
                 title: merge(options, "title", function (date, count) {
                     return date + ": " + count;
@@ -154,6 +155,11 @@
                 })
                 .on("mouseleave", function () {
                     d3.select(this).attr("r", opts.pointSize);
+                })
+                .on("click", function(d) {
+                    if(opts.pointClick) {
+                        opts.pointClick(dateFormat(d.date), d.count);
+                    }
                 })
                 .append("svg:title")
                     .text(function (d) {
