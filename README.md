@@ -32,6 +32,7 @@ This is the most basic line chart
         <div id="chart" style="width: 1100px; height: 240px;"></div>
     </body>
     
+To draw more than one line, pass data as an array of objects.
     
 More examples can be found in the examples directory.
 
@@ -56,6 +57,5 @@ Usage:
 
 ## TODO
 1. Allow types other than datetime on X axis
-2. Multiple lines
-3. Animations
-4. Pie charts
+2. Animations
+3. Pie charts

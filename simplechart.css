@@ -35,3 +35,23 @@
     stroke-width: 2px;
     fill: #fff;
 }
+
+.sc-line-0 {
+    stroke: #4b80b6;
+}
+
+.sc-line-1 {
+    stroke: #79af7b;
+}
+
+.sc-line-2 {
+    stroke: #dc504f;
+}
+
+.sc-line-3 {
+    stroke: #e2ba74;
+}
+
+.sc-line-4 {
+    stroke: #a267a7;
+}

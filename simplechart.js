@@ -51,6 +51,10 @@
                     return date + ": " + count;
                 })
             };
+            
+        if(!Array.isArray(data)) {
+            data = [data];
+        }
 
         var dateFormat = d3.time.format(opts.dateFormat);
         
@@ -67,7 +71,6 @@
 
         var yAxis = d3.svg.axis()
             .scale(y)
-            .ticks(5) // TODO: Do a smarter choice here
             .orient("left");
 
         var line = d3.svg.line()
@@ -88,23 +91,27 @@
         var max = 0;
         
         var wrapped = [];
-        for (var key in data) {
-            var value = +data[key];
-            wrapped.push({
-                date: dateFormat.parse(key),
-                count: value
-            });
+        for(var i = 0; i < data.length; i++) {
+            wrapped[i] = [];
             
-            if(value < min) {
-                min = value;
-            } else if(value > max) {
-                max = value;
+            for (var key in data[i]) {
+                var value = +data[i][key];
+                wrapped[i].push({
+                    date: dateFormat.parse(key),
+                    count: value
+                });
+                
+                if(value < min) {
+                    min = value;
+                } else if(value > max) {
+                    max = value;
+                }
             }
         }
         
-        x.domain([wrapped[0].date, wrapped[wrapped.length - 1].date]);
+        x.domain([wrapped[0][0].date, wrapped[0][wrapped[0].length - 1].date]);
         y.domain([max, min]);
-
+        
         // Grid
         var xAxisGrid = yAxisGrid = false;
         if (opts.grid) {
@@ -138,10 +145,13 @@
                 area = area.interpolate("monotone");
             }
 
-            svg.append("path")
-              .attr("class", "sc-area")
-              .attr("clip-path", "url(#clip)")
-              .attr("d", area(wrapped));
+            for(var i = 0; i < wrapped.length; i++) {
+                svg.append("path")
+                  .attr("data-index", i)
+                  .attr("class", "sc-area sc-area-"+i)
+                  .attr("clip-path", "url(#clip)")
+                  .attr("d", area(wrapped[i]));
+          }
         }
 
         // Axises
@@ -157,40 +167,44 @@
         }
 
         // Line
-        svg.append("path")
-            .datum(wrapped)
-            .attr("class", "sc-line")
-            .attr("d", line);
+        for(var i = 0; i < wrapped.length; i++) {
+            svg.append("path")
+                .datum(wrapped[i])
+                .attr("class", "sc-line sc-line-" + i)
+                .attr("d", line);
+        }
         
         // Points
-        if(opts.points) {        
-            svg.selectAll("data-point")
-                .data(wrapped)
-                .enter()
-                .append("svg:circle")
-                .attr("class", "sc-point")
-                .attr("cx", function (a) {
-                    return x(a.date);
-                })
-                .attr("cy", function (a) {
-                    return y(a.count) + 1;
-                })
-                .attr("r", opts.pointSize)
-                .on("mouseenter", function () {
-                    d3.select(this).attr("r", opts.pointSize + 2);
-                })
-                .on("mouseleave", function () {
-                    d3.select(this).attr("r", opts.pointSize);
-                })
-                .on("click", function(d) {
-                    if(opts.pointClick) {
-                        opts.pointClick(dateFormat(d.date), d.count);
-                    }
-                })
-                .append("svg:title")
-                    .text(function (d) {
-                        return opts.title(dateFormat(d.date), d.count);
-                    });
+        if(opts.points) {
+            for(var i = 0; i < wrapped.length; i++) {
+                svg.selectAll("data-point")
+                    .data(wrapped[i])
+                    .enter()
+                    .append("svg:circle")
+                    .attr("class", "sc-point")
+                    .attr("cx", function (a) {
+                        return x(a.date);
+                    })
+                    .attr("cy", function (a) {
+                        return y(a.count) + 1;
+                    })
+                    .attr("r", opts.pointSize)
+                    .on("mouseenter", function () {
+                        d3.select(this).attr("r", opts.pointSize + 2);
+                    })
+                    .on("mouseleave", function () {
+                        d3.select(this).attr("r", opts.pointSize);
+                    })
+                    .on("click", function(d) {
+                        if(opts.pointClick) {
+                            opts.pointClick(dateFormat(d.date), d.count);
+                        }
+                    })
+                    .append("svg:title")
+                        .text(function (d) {
+                            return opts.title(dateFormat(d.date), d.count);
+                        });
+            }
         }
     };
 
