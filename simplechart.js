@@ -41,6 +41,7 @@
             opts = {
                 area: merge(options, "area", true),
                 smooth: merge(options, "smooth", true),
+                grid: merge(options, "grid", true),
                 points: merge(options, "points", true),
                 pointSize: merge(options, "pointSize", 4),
                 pointClick: merge(options, "pointClick", false),
@@ -65,7 +66,7 @@
 
         var yAxis = d3.svg.axis()
             .scale(y)
-            .ticks(5)
+            .ticks(5) // TODO: Do a smarter choice here
             .orient("left");
 
         var line = d3.svg.line()
@@ -103,7 +104,29 @@
         x.domain([wrapped[0].date, wrapped[wrapped.length - 1].date]);
         y.domain([max, min]);
 
-        // Fill
+        // Grid
+        var xAxisGrid = yAxisGrid = false;
+        if (opts.grid) {
+            var yAxisGrid = d3.svg.axis().scale(y)
+              .tickSize(width, 0)
+              .tickFormat("")
+              .orient("right")
+
+            var xAxisGrid = d3.svg.axis().scale(x)
+              .tickSize(-height, 0)
+              .tickFormat("")
+              .orient("top")
+              
+             svg.append("g")
+                .attr("class", "sc-grid")
+                .call(xAxisGrid);
+                
+            svg.append("g")
+                .attr("class", "sc-grid")
+                .call(yAxisGrid);
+        }
+        
+        // Area fill
         if (opts.area) {        
             var area = d3.svg.area()
                         .x(function (d) { return x(d.date); })

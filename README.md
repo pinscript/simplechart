@@ -42,6 +42,7 @@ Charts can be customized by providing the following options:
     var options = {
         area: bool (default true),
         smooth: bool (default true),
+        grid: bool (default true),
         points: bool (default true),
         pointSize: int (default 4),
         pointClick: function (function invoked when clicking a point, default none),
@@ -55,7 +56,6 @@ Usage:
 
 ## TODO
 1. Allow types other than datetime on X axis
-2. Grid
-3. Multiple lines
-4. Animations
-5. Pie charts
+2. Multiple lines
+3. Animations
+4. Pie charts

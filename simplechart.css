@@ -5,6 +5,16 @@
 }
 
 .sc-axis text {
+    fill: #c9c9c9;
+}
+
+.sc-grid line{
+    fill: none;
+    stroke: #e8e8e8;
+    shape-rendering: crispEdges;
+}
+
+.sc-axis text {
     font-family: Helvetica,Arial,Verdana,sans-serif;
     font-size: 8px;
     fill: #333;
