@@ -43,6 +43,7 @@
                 axis: merge(options, "axis", true),
                 smooth: merge(options, "smooth", true),
                 grid: merge(options, "grid", true),
+                dualAxis: merge(options, "dualAxis", false),
                 points: merge(options, "points", true),
                 pointSize: merge(options, "pointSize", 4),
                 pointClick: merge(options, "pointClick", false),
@@ -72,6 +73,14 @@
         var yAxis = d3.svg.axis()
             .scale(y)
             .orient("left");
+
+        var yAxis2;
+        if(opts.dualAxis) {
+            // Mirror yAxis
+            yAxis2 = d3.svg.axis()
+                .scale(y)
+                .orient("right");
+        }
 
         var line = d3.svg.line()
             .x(function (d) { return x(d.date); })
@@ -164,6 +173,13 @@
             svg.append("g")
                 .attr("class", "y sc-axis")
                 .call(yAxis);
+
+            if(opts.dualAxis && yAxis2) {
+                svg.append("g")
+                    .attr("class", "y sc-axis")
+                    .attr("transform", "translate(" + width + ", 0)")
+                    .call(yAxis2)
+            }
         }
 
         // Line

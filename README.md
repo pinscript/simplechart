@@ -45,6 +45,7 @@ Charts can be customized by providing the following options:
         smooth: bool (default true),
         axis: bool (default true),
         grid: bool (default true),
+        dualAxis: bool (default false),
         points: bool (default true),
         pointSize: int (default 4),
         pointClick: function (function invoked when clicking a point, default none),
