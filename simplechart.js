@@ -165,6 +165,16 @@
 
         // Axises
         if (opts.axis) {
+            // Top line
+            if (opts.grid) {
+                svg.append("line")
+                    .attr("x1", 0)
+                    .attr("y0", 0)
+                    .attr("x2", width)
+                    .attr("y2", 0)
+                    .style("stroke", "#e8e8e8");
+            }
+
             svg.append("g")
                 .attr("class", "x sc-axis")
                 .attr("transform", "translate(0," + height + ")")
@@ -174,11 +184,12 @@
                 .attr("class", "y sc-axis")
                 .call(yAxis);
 
+
             if(opts.dualAxis && yAxis2) {
                 svg.append("g")
                     .attr("class", "y sc-axis")
                     .attr("transform", "translate(" + width + ", 0)")
-                    .call(yAxis2)
+                    .call(yAxis2);
             }
         }
 
