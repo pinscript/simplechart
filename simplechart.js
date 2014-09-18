@@ -172,7 +172,7 @@
                     .attr("y0", 0)
                     .attr("x2", width)
                     .attr("y2", 0)
-                    .style("stroke", "#e8e8e8");
+                    .attr("class", "sc-line");
             }
 
             svg.append("g")

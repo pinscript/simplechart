@@ -8,7 +8,7 @@
     fill: #c9c9c9;
 }
 
-.sc-grid line{
+.sc-grid line, line.sc-line {
     fill: none;
     stroke: #e8e8e8;
     shape-rendering: crispEdges;
